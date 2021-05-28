@@ -1,3 +1,4 @@
+import React from 'react';
 import * as d3 from 'd3';
 
 function BarChart() {
@@ -92,4 +93,13 @@ function BarChart() {
 
       // .on("mouseover", handleMouseOver);
     });
+
+  return (
+    <div>
+      <div id="title">bar chart title</div>
+      <div class="svgChart"></div>
+    </div>
+  );
 }
+
+export default BarChart;
