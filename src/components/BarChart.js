@@ -52,14 +52,21 @@ function BarChart() {
         .tickFormat((value) => `${value / 1000}T`);
 
       const tooltip = d3
-        .select('svgChart')
+        .select('.svgChart')
         .append('div')
         .attr('class', 'tooltip')
-        .style('opacity', 0);
+        .style('opacity', 0)
+        .style('position', 'absolute')
+        .style('padding', '0 10px')
+        .style('background', 'blue')
+        .style('border-radius', '8px');
 
-      //     function handleMouseOver(dates, values) {
-      //       tooltip.style('opacity',1)
-      //     }
+      function handleMouseOver(d, i) {
+        tooltip
+          .style('opacity', 1)
+          .style('fill', 'white')
+          .html(d[i] + '<br>' + '$' + d[i] + ' Billion');
+      }
 
       svg
         .append('g')
@@ -89,9 +96,9 @@ function BarChart() {
         .attr('x', (d, i) => i * barWidth + margin.left)
         .attr('y', (d, i) => height - yScale(d) + margin.bottom)
 
-        .attr('class', 'bar');
+        .attr('class', 'bar')
 
-      // .on("mouseover", handleMouseOver);
+        .on('mouseover', handleMouseOver);
     });
 
   return (
