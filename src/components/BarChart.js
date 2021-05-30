@@ -55,17 +55,20 @@ function BarChart() {
         .select('.svgChart')
         .append('div')
         .attr('class', 'tooltip')
-        .style('opacity', 0)
+        .style('visibility', 'hidden')
         .style('position', 'absolute')
         .style('padding', '0 10px')
         .style('background', 'blue')
-        .style('border-radius', '8px');
+        .style('border-radius', '8px')
+        .text('test tooltip');
 
       function handleMouseOver(d, i) {
-        tooltip
-          .style('opacity', 1)
-          .style('fill', 'white')
-          .html(d[i] + '<br>' + '$' + d[i] + ' Billion');
+        d3.select(this).transition().ease('cubic').duration(10);
+
+        //show tooltip on hover
+        d3.select('.tooltip')
+          .style('visibility', 'visible') //set style to it
+          .text('new tooltip'); //set text to it
       }
 
       svg
