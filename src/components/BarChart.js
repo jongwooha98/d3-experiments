@@ -62,14 +62,14 @@ function BarChart() {
         .style('border-radius', '8px')
         .text('test tooltip');
 
-      function handleMouseOver(d, i) {
-        d3.select(this).transition().ease('cubic').duration(10);
+      // function handleMouseOver(d, i) {
+      //   d3.select(this).transition().ease('cubic').duration(10);
 
-        //show tooltip on hover
-        d3.select('.tooltip')
-          .style('visibility', 'visible') //set style to it
-          .text('new tooltip'); //set text to it
-      }
+      //   //show tooltip on hover
+      //   d3.select('.tooltip')
+      //     .style('visibility', 'visible') //set style to it
+      //     .text('new tooltip'); //set text to it
+      // }
 
       svg
         .append('g')
@@ -99,9 +99,9 @@ function BarChart() {
         .attr('x', (d, i) => i * barWidth + margin.left)
         .attr('y', (d, i) => height - yScale(d) + margin.bottom)
 
-        .attr('class', 'bar')
+        .attr('class', 'bar');
 
-        .on('mouseover', handleMouseOver);
+      // .on('mouseover', handleMouseOver);
     });
 
   return (
